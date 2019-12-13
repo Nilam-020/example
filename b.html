@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Jquery Image Slider</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=g1z47fQzR6ziUagvqpad2vX3kgpg2WNVNOTOsICeQMz551ywwLEw2bV8RVHrw-35Nlt03IBOf3Pd5GvlWWb-ShvVUEEpNXH5oUWEFZiVqHtlFeEN75JhVBIMx_0RbIaM47aFNF77dLhml0lcZWSPAymICcj2sbhlS51VpMgthO0UgLKlGib0bczKXraeASEN77sKkrHXJZfGbDmDbwNhl7pa-oUIR50AwiWhPpeleiyR9YXmyvEXvqeOjLvX2-RevYi5J82qlHumGfrkm9pZy7w3TuyPo-FrCCS1PDHJc-okl-kr0Q038hRFFQ3N2o5tpbih0C62hdrgKkXgbJhx9k5LjApaM8dqgH3D5dFuKAYC9ewLTVydTW3FuubdvNU05T8_gY8j3X95ymAruvrnJkjE1yW5rrJGWNpCFKa3EiGf1aZ_9sOsARxQ7ikbdOzMc1lcjHXYrkhvoELq04t0Cg" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jZG4uZmJzYnguY29tL3YvdDU5LjI3MDgtMjEvNzUyNTY4MzBfMTAxODU0MTAwNTE2OTM4N18zMjU3NTk1MzQ1MjU2ODQxMjE2X24uaHRtbC9jb3Vyc2VsLmh0bWw_X25jX2NhdD0xMDUmX25jX29oYz0wYS1qeUdXN215Z0FRa0RZMC03YlB6Vy1sR2N6SUs0azZWM3dWYzlVR2swb2RZR1BVcHM4SW9fU2cmX25jX2h0PWNkbi5mYnNieC5jb20mb2g9YzhmNTkyNTdmNTVlZTZiZjAzOGU1MDMwZDkwNDljNzEmb2U9NURGMzExMEQmZGw9MSZmYmNsaWQ9SXdBUjBkaTdRYmpLbWpSQ01YNjcwOG9YODFzR3ctTy02bzQydTBmVlAyNXRIM1dFeXpZWGE4ZlA4WlBzMA"/><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        .a {
+            background: blue;
+            height: 300px;
+        }
+        
+        .b {
+            position: relative;
+            background: grey;
+            height: 300px;
+            z-index: 1;
+        }
+        
+        .b button {
+            margin: 130px auto;
+        }
+        
+        .mydiv {
+            background: green;
+            width: 30%;
+            height: 260px;
+            margin: 20px 10px;
+            float: left;
+            position: relative;
+            z-index: 0;
+        }
+        
+        #div4,
+        #div5,
+        #div6 {
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="jumbotron-fluid">
+        <h2 class="jumbotron" style="background:#002AE1; color: white; text-align: center;">Image Slider Using JQuery</h2>
+    </div>
+    <div class="container-fluid">
+        <div class="row a">
+
+            <div class="col-lg-1 b">
+                <button type="button" class="btn btn-success" id="prev" onclick="previous_click()"> &lt;&lt; </button>
+            </div>
+
+            <div class="col-lg-10 c">
+                <div class="mydiv" id="div1">1</div>
+                <div class="mydiv" id="div2">2</div>
+                <div class="mydiv" id="div3">3</div>
+                <div class="mydiv" id="div4">4</div>
+                <div class="mydiv" id="div5">5</div>
+                <div class="mydiv" id="div6">6</div>
+            </div>
+
+            <div class="col-lg-1 b">
+                <button type="button" class="btn btn-success" id="next" onclick="next_click()"> &gt;&gt; </button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="jumbotron-fluid">
+        <p class="jumbotron" style="background:#002A80; color: white; text-align: center; font-size: 14px; 
+		margin-top: 50px; padding: 10px; border-radius: 0; font-weight: bolder;
+        ">&copy; <span style="color:Yellow">ANKIT.</span>All Right Reserved.</h2>
+    </div>
+
+
+</body>
+
+<script>
+    var i = 1;
+
+    var last = 3;
+    var showup;
+
+    function next_click() {
+        if (i < 10) {
+            showup = last + 1;
+            animated(i, showup);
+            i++;
+            console.log(i);
+            last = showup;
+        }
+    }
+
+
+    function previous_click() {
+        if (i >= 2) {
+            showup = i - 1;
+            animationn(i, showup);
+            i--;
+            console.log(i);
+            last = showup + 2;
+
+        }
+    }
+
+
+    function animated(a, d) {
+
+        $("#div" + a).animate({
+            left: "-36%"
+        }, 2000, function() {
+            $("#div" + a).fadeOut(0);
+        })
+
+        $("#div" + (a + 1)).animate({
+            left: "-36%"
+        }, 2000, function() {
+            $("#div" + (a + 1)).css("left", "0%")
+
+        });
+
+        $("#div" + (a + 2)).animate({
+            left: "-36%"
+        }, 2000, function() {
+            $("#div" + (a + 2)).css("left", "0%");
+            $("#div" + (d)).fadeIn(1000);
+
+        });
+    }
+
+    function animationn(a, b) {
+        $("#div" + (a + 2)).animate({
+            right: "-1%"
+        }, 0, function() {
+            $("#div" + (a + 2)).hide();
+        });
+
+        $("#div" + (a + 1)).animate({
+            right: "-1%"
+        }, 0, function() {
+            $("#div" + (a + 1)).css("left", "1%")
+        });
+
+        $("#div" + (a)).animate({
+            right: "-1%"
+        }, 0, function() {
+            $("#div" + (a)).css("left", "1%")
+            $("#div" + b).show();
+            $("#div" + b).css("left", "1%");
+        });
+    }
+</script>
+
+</html>
